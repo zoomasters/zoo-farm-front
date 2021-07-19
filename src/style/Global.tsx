@@ -1,13 +1,19 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 // eslint-disable-next-line import/no-unresolved
-import { PancakeTheme } from '@pancakeswap/uikit/dist/theme'
+import { PancakeTheme } from "@pancakeswap/uikit/dist/theme";
 
-declare module 'styled-components' {
+declare module "styled-components" {
   /* eslint-disable @typescript-eslint/no-empty-interface */
-  export interface DefaultTheme extends PancakeTheme { }
+  export interface DefaultTheme extends PancakeTheme {}
 }
 
 const GlobalStyle = createGlobalStyle`
+.bg{
+  background:url("/img/bg.png") !important;
+  background-size:cover !important;
+  background-repeat:no-repeat !important;
+  background-position:center !important;
+}
   * {
     font-family: 'Kanit', sans-serif;
   }
@@ -1385,6 +1391,6 @@ a, a:visited {
 
 /*# sourceMappingURL=style.css.map */
 
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;

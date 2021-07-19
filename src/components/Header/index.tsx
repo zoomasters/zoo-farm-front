@@ -3,26 +3,22 @@ import { Link } from 'react-router-dom'
 import { Popover, Transition } from '@headlessui/react'
 import { useWalletModal } from '@pancakeswap/uikit'
 import { useWeb3React } from '@web3-react/core'
+import useAuth from 'hooks/useAuth'
 
 function Header() {
   const { account } = useWeb3React()
-  const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(
-    () => null,
-    () => null,
-    account,
-  )
+  const { login, logout } = useAuth()
+  const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(login, logout, account)
   const navs = [
     { name: 'Home', to: '/' },
     { name: 'Why ZooMaster', to: '/' },
     { name: 'How we work', to: '/' },
     { name: 'Our mission', to: '/' },
     { name: 'Our Team', to: '/' },
-    { name: 'Pools', to: '/pools' },
-    { name: 'Farm', to: '/farms' },
   ]
   return (
     <>
-      <Popover className="relative bg-primary shadow">
+      <Popover className="relative bg-primary">
         {({ open }) => (
           <>
             <div className="max-w-8xl mx-auto px-4 md:px-10 lg:px-18 py-0.5">
