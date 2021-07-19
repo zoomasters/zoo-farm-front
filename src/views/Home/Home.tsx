@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 /* eslint-disable no-nested-ternary */
 import React from 'react'
 import { Link } from 'react-router-dom'
@@ -255,6 +258,7 @@ const Home: React.FC = () => {
                 src="/img/Q1.svg"
                 onClick={handleClick.bind(this, 2)}
                 alt=""
+                role="button"
                 className={`cursor-pointer ${
                   show === 1 ? 'opacity-100' : 'opacity-20'
                 } hover:opacity-100 transition-all transform w-28`}
@@ -262,6 +266,7 @@ const Home: React.FC = () => {
               <img
                 src="/img/Q2.svg"
                 alt=""
+                role="button"
                 className={`cursor-pointer ${
                   show === 2 ? 'opacity-100' : 'opacity-20'
                 } hover:opacity-100 transition-all transform w-28`}
@@ -271,6 +276,7 @@ const Home: React.FC = () => {
                 onClick={handleClick.bind(this, 3)}
                 src="/img/Q3.svg"
                 alt=""
+                role="button"
                 className={`cursor-pointer ${
                   show === 3 ? 'opacity-100' : 'opacity-20'
                 } hover:opacity-100 transition-all transform w-28`}
@@ -279,6 +285,7 @@ const Home: React.FC = () => {
                 onClick={handleClick.bind(this, 4)}
                 src="/img/Q4.svg"
                 alt=""
+                role="button"
                 className={`cursor-pointer ${
                   show === 4 ? 'opacity' : 'opacity-20'
                 } hover:opacity-100 transition-all transform w-28`}
@@ -288,6 +295,7 @@ const Home: React.FC = () => {
               <img
                 width="20"
                 onClick={handleClick.bind(this, show === 1 ? 1 : show - 1)}
+                role="button"
                 src="/img/chevron-left.svg"
                 alt=""
                 className="cursor-pointer mr-20"
@@ -382,6 +390,7 @@ const Home: React.FC = () => {
                 width="20"
                 onClick={handleClick.bind(this, show === 4 ? 4 : show + 1)}
                 src="/img/chevron-right.svg"
+                role="button"
                 alt=""
                 className="cursor-pointer"
               />
