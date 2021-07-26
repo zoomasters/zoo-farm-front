@@ -1,53 +1,53 @@
 import { useEffect, useState } from 'react'
 import BigNumber from 'bignumber.js'
-import { useWeb3React } from '@web3-react/core'
-import { getBep20Contract, getCakeContract } from 'utils/contractHelpers'
-import { BIG_ZERO } from 'utils/bigNumber'
-import { simpleRpcProvider } from 'utils/providers'
+import { useWallet } from '@binance-chain/bsc-use-wallet'
+import { provider } from 'web3-core'
+import cakeABI from 'config/abi/cake.json'
+import { getContract } from 'utils/web3'
+import { getTokenBalance } from 'utils/erc20'
+import {getLotteryAddress, getCakeAddress} from 'utils/addressHelpers'
+import multicall from 'utils/multicall'
+import erc20 from 'config/abi/erc20.json'
 import useRefresh from './useRefresh'
-import useLastUpdated from './useLastUpdated'
 
-type UseTokenBalanceState = {
-  balance: BigNumber
-  fetchStatus: FetchStatus
-}
+// const useTokenBalance = (tokenAddress: string) => {
+//   const [balance, setBalance] = useState(new BigNumber(0))
+//   const { account, ethereum }: { account: string; ethereum: provider } = useWallet()
+//   const { fastRefresh } = useRefresh()
+//
+//   useEffect(() => {
+//     const fetchBalance = async () => {
+//       const res = await getTokenBalance(ethereum, tokenAddress, account)
+//       setBalance(new BigNumber(res))
+//     }
+//
+//     if (account && ethereum) {
+//       fetchBalance()
+//     }
+//   }, [account, ethereum, tokenAddress, fastRefresh])
+//
+//   return balance
+// }
 
-export enum FetchStatus {
-  NOT_FETCHED = 'not-fetched',
-  SUCCESS = 'success',
-  FAILED = 'failed',
-}
-
-const useTokenBalance = (tokenAddress: string) => {
-  const { NOT_FETCHED, SUCCESS, FAILED } = FetchStatus
-  const [balanceState, setBalanceState] = useState<UseTokenBalanceState>({
-    balance: BIG_ZERO,
-    fetchStatus: NOT_FETCHED,
-  })
-  const { account } = useWeb3React()
+const useTokenBalance = (tokenAddress: string, _account?: string, _provider?: any) => {
+  const [balance, setBalance] = useState(new BigNumber(0))
+  const { account: useAccount, ethereum }: { account: string; ethereum: provider } = useWallet()
   const { fastRefresh } = useRefresh()
+  const account = _account || useAccount;
+  const currentProvider = _provider || ethereum;
 
   useEffect(() => {
     const fetchBalance = async () => {
-      const contract = getBep20Contract(tokenAddress)
-      try {
-        const res = await contract.balanceOf(account)
-        setBalanceState({ balance: new BigNumber(res.toString()), fetchStatus: SUCCESS })
-      } catch (e) {
-        console.error(e)
-        setBalanceState((prev) => ({
-          ...prev,
-          fetchStatus: FAILED,
-        }))
-      }
+      const res = await getTokenBalance(currentProvider, tokenAddress, account)
+      setBalance(new BigNumber(res))
     }
 
-    if (account) {
+    if (account && currentProvider) {
       fetchBalance()
     }
-  }, [account, tokenAddress, fastRefresh, SUCCESS, FAILED])
+  }, [account, currentProvider, tokenAddress, fastRefresh])
 
-  return balanceState
+  return balance
 }
 
 export const useTotalSupply = () => {
@@ -56,9 +56,9 @@ export const useTotalSupply = () => {
 
   useEffect(() => {
     async function fetchTotalSupply() {
-      const cakeContract = getCakeContract()
-      const supply = await cakeContract.totalSupply()
-      setTotalSupply(new BigNumber(supply.toString()))
+      const cakeContract = getContract(cakeABI, getCakeAddress())
+      const supply = await cakeContract.methods.totalSupply().call()
+      setTotalSupply(new BigNumber(supply))
     }
 
     fetchTotalSupply()
@@ -68,14 +68,14 @@ export const useTotalSupply = () => {
 }
 
 export const useBurnedBalance = (tokenAddress: string) => {
-  const [balance, setBalance] = useState(BIG_ZERO)
+  const [balance, setBalance] = useState(new BigNumber(0))
   const { slowRefresh } = useRefresh()
 
   useEffect(() => {
     const fetchBalance = async () => {
-      const contract = getBep20Contract(tokenAddress)
-      const res = await contract.balanceOf('0x000000000000000000000000000000000000dEaD')
-      setBalance(new BigNumber(res.toString()))
+      const cakeContract = getContract(cakeABI, getCakeAddress())
+      const bal = await cakeContract.methods.balanceOf('0x000000000000000000000000000000000000dEaD').call()
+      setBalance(new BigNumber(bal))
     }
 
     fetchBalance()
@@ -84,23 +84,34 @@ export const useBurnedBalance = (tokenAddress: string) => {
   return balance
 }
 
-export const useGetBnbBalance = () => {
-  const [balance, setBalance] = useState(BIG_ZERO)
-  const { account } = useWeb3React()
-  const { lastUpdated, setLastUpdated } = useLastUpdated()
+export const useLotteryLockedBalance = (tokenAddress: string) => {
+  const [balance, setBalance] = useState(new BigNumber(0))
+  const { slowRefresh } = useRefresh()
 
   useEffect(() => {
     const fetchBalance = async () => {
-      const walletBalance = await simpleRpcProvider.getBalance(account)
-      setBalance(new BigNumber(walletBalance.toString()))
+      const burnAddress = getLotteryAddress()
+      const [burnedCakeBalance] = await multicall(erc20, [
+        {
+          address: tokenAddress,
+          name: 'balanceOf',
+          params: [burnAddress],
+        },
+      ])
+
+      if (!burnedCakeBalance) return
+
+      setBalance(new BigNumber(burnedCakeBalance))
     }
 
-    if (account) {
-      fetchBalance()
-    }
-  }, [account, lastUpdated, setBalance])
+    fetchBalance()
+  }, [slowRefresh, tokenAddress])
 
-  return { balance, refresh: setLastUpdated }
+  if (!balance) {
+    return new BigNumber(0)
+  }
+
+  return balance
 }
 
 export default useTokenBalance

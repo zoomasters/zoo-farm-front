@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ThemeProvider as SCThemeProvider } from 'styled-components'
-import { light, dark } from '@pancakeswap/uikit'
+import { light, dark } from '@pancakeswap-libs/uikit'
 
 const CACHE_KEY = 'IS_DARK'
 
@@ -18,22 +18,10 @@ const ThemeContextProvider = ({ children }) => {
       return !prevState
     })
   }
+
   return (
     <ThemeContext.Provider value={{ isDark, toggleTheme }}>
-      <SCThemeProvider
-        theme={() => ({
-          ...light,
-          colors: {
-            ...light?.colors,
-            primary: '#006EE9',
-            secondary: '#006EE9',
-            textSubtle: '#006EE9',
-            inputSecondary: '#91c5ff',
-          },
-        })}
-      >
-        {children}
-      </SCThemeProvider>
+      <SCThemeProvider theme={isDark ? dark : light}>{children}</SCThemeProvider>
     </ThemeContext.Provider>
   )
 }

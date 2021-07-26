@@ -1,122 +1,110 @@
-import { MenuEntry } from '@pancakeswap/uikit'
-import { ContextApi } from 'contexts/Localization/types'
+import { MenuEntry } from '@pancakeswap-libs/uikit'
 
-const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
+const config: MenuEntry[] = [
   {
-    label: t('Home'),
+    label: 'Home',
     icon: 'HomeIcon',
     href: '/',
   },
   {
-    label: t('Trade'),
+    label: 'Trade',
     icon: 'TradeIcon',
     items: [
       {
-        label: t('Exchange'),
-        href: 'https://exchange.pancakeswap.finance/#/swap',
+        label: 'Buy',
+        href: '/buy',
       },
       {
-        label: t('Liquidity'),
-        href: 'https://exchange.pancakeswap.finance/#/pool',
-      },
-      {
-        label: t('LP Migration'),
-        href: 'https://v1exchange.pancakeswap.finance/#/migrate',
+        label: 'Liquidity',
+        href: '/liquidity',
       },
     ],
   },
   {
-    label: t('Farms'),
+    label: 'Farms',
     icon: 'FarmIcon',
     href: '/farms',
   },
   {
-    label: t('Pools'),
+    label: 'Pools',
     icon: 'PoolIcon',
     href: '/pools',
   },
+
   {
-    label: t('Prediction (BETA)'),
-    icon: 'PredictionsIcon',
-    href: '/prediction',
+    label: 'Jungle Pools',
+    icon: 'PoolIcon',
+    href: '/junglepools',
   },
   {
-    label: t('Lottery'),
-    icon: 'TicketIcon',
-    href: '/lottery',
-    status: {
-      text: t('Win').toLocaleUpperCase(),
-      color: 'success',
-    },
+    label: 'Launchpad (IDO)',
+    icon: 'IfoIcon',
+    href: '/ido',
   },
   {
-    label: t('Collectibles'),
+    label: 'NFT Marketplace',
     icon: 'NftIcon',
-    href: '/collectibles',
+    href: '/nft',
   },
   {
-    label: t('Team Battle'),
-    icon: 'TeamBattleIcon',
-    href: '/competition',
+    label: 'King of Elephants',
+    icon: 'NftIcon',
+    href: '/kingofelephants'
   },
   {
-    label: t('Teams & Profile'),
-    icon: 'GroupsIcon',
+    label: 'Info',
+    icon: 'InfoIcon',
     items: [
       {
-        label: t('Leaderboard'),
-        href: '/teams',
+        label: 'QuickSwap Chart',
+        href: 'https://info.quickswap.exchange/token/0xF4B0903774532AEe5ee567C02aaB681a81539e92',
       },
       {
-        label: t('Task Center'),
-        href: '/profile/tasks',
+        label: 'Polygon Explorer',
+        href: 'https://explorer-mainnet.maticvigil.com/tokens/0xF4B0903774532AEe5ee567C02aaB681a81539e92',
       },
       {
-        label: t('Your Profile'),
-        href: '/profile',
+        label: 'Dapp Radar',
+        href: 'https://dappradar.com/polygon/defi/polygaj-finance'
       },
+      {
+        label: 'Dapp.com',
+        href: 'https://www.dapp.com/app/polygaj-network'
+      },
+      {
+        label: 'GAJ Chart',
+        href: 'https://quickchart.app/token/0xF4B0903774532AEe5ee567C02aaB681a81539e92'
+      }
     ],
   },
   {
-    label: t('Info'),
-    icon: 'InfoIcon',
-    href: 'https://pancakeswap.info',
-  },
-  {
-    label: t('IFO'),
-    icon: 'IfoIcon',
-    href: '/ifo',
-  },
-  {
-    label: t('More'),
+    label: 'More',
     icon: 'MoreIcon',
     items: [
       {
-        label: t('Contact'),
-        href: 'https://docs.pancakeswap.finance/contact-us',
+        label: "Github",
+        href: "https://github.com/polygaj",
       },
       {
-        label: t('Voting'),
-        href: '/voting',
+        label: "Blog",
+        href: "https://polygaj.medium.com",
       },
       {
-        label: t('Github'),
-        href: 'https://github.com/pancakeswap',
-      },
-      {
-        label: t('Docs'),
-        href: 'https://docs.pancakeswap.finance',
-      },
-      {
-        label: t('Blog'),
-        href: 'https://pancakeswap.medium.com',
-      },
-      {
-        label: t('Merch'),
-        href: 'https://pancakeswap.creator-spring.com/',
+        label: "Docs",
+        href: "https://docs.polygaj.finance/",
       },
     ],
   },
+  {
+    label: "Roadmap",
+    icon: "RoadmapIcon",
+    href: 'https://docs.polygaj.finance/roadmap',
+  },
+  {
+    label: "Collab",
+    icon: "HandshakeIcon",
+    href: 'https://t.me/polygajhead',
+  }
 ]
 
 export default config

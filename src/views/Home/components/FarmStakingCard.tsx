@@ -1,18 +1,22 @@
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
-import { Heading, Card, CardBody, Button } from '@pancakeswap/uikit'
-import { harvestFarm } from 'utils/calls'
-import { useWeb3React } from '@web3-react/core'
-import { useTranslation } from 'contexts/Localization'
-import useFarmsWithBalance from 'views/Home/hooks/useFarmsWithBalance'
-import { useMasterchef } from 'hooks/useContract'
-import useToast from 'hooks/useToast'
+import { Heading, Card, CardBody, Button } from '@pancakeswap-libs/uikit'
+import { useWallet } from '@binance-chain/bsc-use-wallet'
+import useI18n from 'hooks/useI18n'
+import BigNumber from 'bignumber.js/bignumber'
+import { useAllHarvest } from 'hooks/useHarvest'
+import useFarmsWithBalance from 'hooks/useFarmsWithBalance'
 import UnlockButton from 'components/UnlockButton'
 import CakeHarvestBalance from './CakeHarvestBalance'
 import CakeWalletBalance from './CakeWalletBalance'
+import useAllEarnings from '../../../hooks/useAllEarnings'
+import { usePriceCakeBusd } from '../../../state/hooks'
+import { getCakeAddress } from '../../../utils/addressHelpers'
+import useTokenBalance from '../../../hooks/useTokenBalance'
+import { getBalanceNumber } from '../../../utils/formatBalance'
 
 const StyledFarmStakingCard = styled(Card)`
-  background-image: url('/images/cake-bg.svg');
+  background-image: url('/images/egg/2a.png');
   background-repeat: no-repeat;
   background-position: top right;
   min-height: 376px;
@@ -37,41 +41,45 @@ const Actions = styled.div`
 
 const FarmedStakingCard = () => {
   const [pendingTx, setPendingTx] = useState(false)
-  const { account } = useWeb3React()
-  const { t } = useTranslation()
-  const { toastError } = useToast()
+  const { account } = useWallet()
+  const TranslateString = useI18n()
   const farmsWithBalance = useFarmsWithBalance()
-  const masterChefContract = useMasterchef()
-  const balancesWithValue = farmsWithBalance.filter((balanceType) => balanceType.balance.gt(0))
+  const cakeBalance = getBalanceNumber(useTokenBalance(getCakeAddress()))
+  const eggPrice = usePriceCakeBusd().toNumber()
+  const earningsSum = farmsWithBalance.reduce((accum, farm) => {
+    return accum + new BigNumber(farm.balance).div(new BigNumber(10).pow(18)).toNumber()
+  }, 0)
+  const balancesWithValue = farmsWithBalance.filter((balanceType) => balanceType.balance.toNumber() > 0)
+
+  const { onReward } = useAllHarvest(balancesWithValue.map((farmWithBalance) => farmWithBalance.pid))
 
   const harvestAllFarms = useCallback(async () => {
     setPendingTx(true)
-    // eslint-disable-next-line no-restricted-syntax
-    for (const farmWithBalance of balancesWithValue) {
-      try {
-        // eslint-disable-next-line no-await-in-loop
-        await harvestFarm(masterChefContract, farmWithBalance.pid)
-      } catch (error) {
-        toastError(t('Error'), t('Please try again. Confirm the transaction and make sure you are paying enough gas!'))
-      }
+    try {
+      await onReward()
+    } catch (error) {
+      // TODO: find a way to handle when the user rejects transaction or it fails
+    } finally {
+      setPendingTx(false)
     }
-    setPendingTx(false)
-  }, [balancesWithValue, masterChefContract, toastError, t])
+  }, [onReward])
 
   return (
     <StyledFarmStakingCard>
       <CardBody>
-        <Heading scale="xl" mb="24px">
-          {t('Farms & Staking')}
+        <Heading size="xl" mb="24px">
+          {TranslateString(542, 'Farms & Staking')}
         </Heading>
-        <CardImage src="/images/cake.svg" alt="cake logo" width={64} height={64} />
+        <CardImage src="/images/egg/2.png" alt="cake logo" width={64} height={64} />
         <Block>
-          <Label>{t('CAKE to Harvest')}:</Label>
-          <CakeHarvestBalance farmsWithBalance={balancesWithValue} />
+          <Label>{TranslateString(544, 'GAJ to Harvest')}</Label>
+          <CakeHarvestBalance earningsSum={earningsSum}/>
+          <Label>~${(eggPrice * earningsSum).toFixed(2)}</Label>
         </Block>
         <Block>
-          <Label>{t('CAKE in Wallet')}:</Label>
-          <CakeWalletBalance />
+          <Label>{TranslateString(546, 'GAJ in Wallet')}</Label>
+          <CakeWalletBalance cakeBalance={cakeBalance} />
+          <Label>~${(eggPrice * cakeBalance).toFixed(2)}</Label>
         </Block>
         <Actions>
           {account ? (
@@ -79,16 +87,14 @@ const FarmedStakingCard = () => {
               id="harvest-all"
               disabled={balancesWithValue.length <= 0 || pendingTx}
               onClick={harvestAllFarms}
-              width="100%"
+              fullWidth
             >
               {pendingTx
-                ? t('Collecting CAKE')
-                : t('Harvest all (%count%)', {
-                    count: balancesWithValue.length,
-                  })}
+                ? TranslateString(548, 'Collecting EGG')
+                : TranslateString(999, `Harvest all (${balancesWithValue.length})`)}
             </Button>
           ) : (
-            <UnlockButton width="100%" />
+            <UnlockButton fullWidth />
           )}
         </Actions>
       </CardBody>

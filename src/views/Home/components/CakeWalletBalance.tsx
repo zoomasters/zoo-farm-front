@@ -1,36 +1,25 @@
 import React from 'react'
-import { Text } from '@pancakeswap/uikit'
-import { useWeb3React } from '@web3-react/core'
+import { Text } from '@pancakeswap-libs/uikit'
+import { useWallet } from '@binance-chain/bsc-use-wallet'
 import useTokenBalance from 'hooks/useTokenBalance'
-import { useTranslation } from 'contexts/Localization'
+import useI18n from 'hooks/useI18n'
 import { getCakeAddress } from 'utils/addressHelpers'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { usePriceCakeBusd } from 'state/hooks'
-import { BigNumber } from 'bignumber.js'
 import CardValue from './CardValue'
-import CardBusdValue from './CardBusdValue'
 
-const CakeWalletBalance = () => {
-  const { t } = useTranslation()
-  const { balance: cakeBalance } = useTokenBalance(getCakeAddress())
-  const cakePriceBusd = usePriceCakeBusd()
-  const busdBalance = new BigNumber(getBalanceNumber(cakeBalance)).multipliedBy(cakePriceBusd).toNumber()
-  const { account } = useWeb3React()
+const CakeWalletBalance = ({cakeBalance}) => {
+  const TranslateString = useI18n()
+  const { account } = useWallet()
 
   if (!account) {
     return (
-      <Text color="textDisabled" style={{ lineHeight: '54px' }}>
-        {t('Locked')}
+      <Text color="textDisabled" style={{ lineHeight: '36px' }}>
+        {TranslateString(298, 'Locked')}
       </Text>
     )
   }
 
-  return (
-    <>
-      <CardValue value={getBalanceNumber(cakeBalance)} decimals={4} fontSize="24px" lineHeight="36px" />
-      {cakePriceBusd.gt(0) ? <CardBusdValue value={busdBalance} /> : <br />}
-    </>
-  )
+  return <CardValue value={cakeBalance} fontSize="24px" />
 }
 
 export default CakeWalletBalance

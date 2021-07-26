@@ -1,26 +1,25 @@
 import React, { useEffect, useRef } from 'react'
 import CountUp from 'react-countup'
-import { Text, TextProps } from '@pancakeswap/uikit'
+import styled from 'styled-components'
+import { Text } from '@pancakeswap-libs/uikit'
 
-interface BalanceProps extends TextProps {
-  value: number
-  decimals?: number
-  unit?: string
+interface TextProps {
   isDisabled?: boolean
-  prefix?: string
-  onClick?: (event: React.MouseEvent<HTMLElement>) => void
+  fontSize?: string
+  color?: string
 }
 
-const Balance: React.FC<BalanceProps> = ({
-  value,
-  color = 'text',
-  decimals = 3,
-  isDisabled = false,
-  unit,
-  prefix,
-  onClick,
-  ...props
-}) => {
+interface BalanceProps extends TextProps {
+  value?: number
+  decimals?: number
+  unit?: string
+}
+
+const StyledText = styled(Text)<TextProps>`
+  color: ${({ isDisabled, color, theme }) => (isDisabled ? theme.colors.textDisabled : color)};
+`
+
+const Balance: React.FC<BalanceProps> = ({ value, fontSize, color, decimals, isDisabled, unit }) => {
   const previousValue = useRef(0)
 
   useEffect(() => {
@@ -28,12 +27,18 @@ const Balance: React.FC<BalanceProps> = ({
   }, [value])
 
   return (
-    <Text color={isDisabled ? 'textDisabled' : color} onClick={onClick} {...props}>
-      {prefix && <span>{prefix}</span>}
+    <StyledText bold color={color} fontSize={fontSize} isDisabled={isDisabled}>
       <CountUp start={previousValue.current} end={value} decimals={decimals} duration={1} separator="," />
-      {unit && <span>{unit}</span>}
-    </Text>
+      {value && unit && <span>{unit}</span>}
+    </StyledText>
   )
+}
+
+Balance.defaultProps = {
+  fontSize: '32px',
+  isDisabled: false,
+  color: 'text',
+  decimals: 3,
 }
 
 export default Balance
