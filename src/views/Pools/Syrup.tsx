@@ -10,14 +10,10 @@ import partition from 'lodash/partition'
 import useI18n from 'hooks/useI18n'
 import useBlock from 'hooks/useBlock'
 import { getBalanceNumber } from 'utils/formatBalance'
-import {
-  useFarms,
-  usePriceBnbBusd,
-  usePools,
-} from 'state/hooks'
+import { useFarms, usePriceBnbBusd, usePools } from 'state/hooks'
 import { QuoteToken } from 'config/constants/types'
-import FlexLayout from 'components/layout/Flex'
-import Page from 'components/layout/Page'
+import FlexLayout from 'components/Layout/Flex'
+import Page from 'components/Layout/Page'
 import PoolCard from './components/PoolCard'
 import PoolTabButtons from './components/PoolTabButtons'
 import Divider from './components/Divider'

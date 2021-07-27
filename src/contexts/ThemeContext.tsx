@@ -18,10 +18,34 @@ const ThemeContextProvider = ({ children }) => {
       return !prevState
     })
   }
-
+  const themes = {
+    ...light,
+    colors: {
+      ...light?.colors,
+      primary: '#006EE9',
+      secondary: '#006EE9',
+      primaryBright: '#006EE9',
+      primaryDark: '#006EE9',
+      textSubtle: '#006EE9',
+      text: '#4c9ffc',
+    },
+    button: {
+      ...light.button,
+      primary: {
+        ...light.button.primary,
+        background: '#006EE9',
+      },
+      subtle: {
+        ...light.button.primary,
+        background: '#4c9ffc',
+        backgroundHover: '#006EE9',
+      },
+    },
+  }
+  console.log('THEMES : ', themes)
   return (
     <ThemeContext.Provider value={{ isDark, toggleTheme }}>
-      <SCThemeProvider theme={isDark ? dark : light}>{children}</SCThemeProvider>
+      <SCThemeProvider theme={themes}>{children}</SCThemeProvider>
     </ThemeContext.Provider>
   )
 }

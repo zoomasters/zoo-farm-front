@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button, Heading, Text, LogoIcon, LinkExternal, Link } from '@pancakeswap-libs/uikit'
-import Page from 'components/layout/Page'
+import Page from 'components/Layout/Page'
 import useI18n from 'hooks/useI18n'
 
 const StyledNotFound = styled.div`
@@ -34,7 +34,9 @@ const NotFound = () => {
     <Page>
       <StyledNotFound>
         <LogoIcon width="64px" mb="8px" />
-        <LinkExternal href='https://quickswap.exchange/#/swap?inputCurrency=0xf4b0903774532aee5ee567c02aab681a81539e92'>BUY GAJ!</LinkExternal>
+        <LinkExternal href="https://quickswap.exchange/#/swap?inputCurrency=0xf4b0903774532aee5ee567c02aab681a81539e92">
+          BUY GAJ!
+        </LinkExternal>
       </StyledNotFound>
     </Page>
   )

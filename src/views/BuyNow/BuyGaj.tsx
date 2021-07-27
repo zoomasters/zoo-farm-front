@@ -6,8 +6,8 @@ import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { provider } from 'web3-core'
 import { Image, Heading } from '@pancakeswap-libs/uikit'
 import { BLOCKS_PER_YEAR, CAKE_PER_BLOCK, CAKE_POOL_PID } from 'config'
-import FlexLayout from 'components/layout/Flex'
-import Page from 'components/layout/Page'
+import FlexLayout from 'components/Layout/Flex'
+import Page from 'components/Layout/Page'
 import { useFarms, usePriceBnbBusd, usePriceCakeBusd } from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
 import { fetchFarmUserDataAsync } from 'state/actions'
@@ -17,7 +17,7 @@ import FarmCard, { FarmWithStakedValue } from './components/FarmCard/FarmCard'
 import FarmTabButtons from './components/FarmTabButtons'
 import Divider from './components/Divider'
 
-export interface FarmsProps{
+export interface FarmsProps {
   tokenMode?: boolean
 }
 
@@ -28,11 +28,11 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
   const cakePrice = usePriceCakeBusd()
   const bnbPrice = usePriceBnbBusd()
   const { account, ethereum }: { account: string; ethereum: provider } = useWallet()
-  const {tokenMode} = farmsProps;
+  const { tokenMode } = farmsProps
 
   const dispatch = useDispatch()
   const { fastRefresh } = useRefresh()
-  useEffect(() => { 
+  useEffect(() => {
     if (account) {
       dispatch(fetchFarmUserDataAsync(account))
     }
@@ -40,8 +40,12 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
 
   const [stakedOnly, setStakedOnly] = useState(false)
 
-  const activeFarms = farmsLP.filter((farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier !== '0X' && farm.pid !== 8)
-  const inactiveFarms = farmsLP.filter((farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier === '0X' && farm.pid !== 8)
+  const activeFarms = farmsLP.filter(
+    (farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier !== '0X' && farm.pid !== 8,
+  )
+  const inactiveFarms = farmsLP.filter(
+    (farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier === '0X' && farm.pid !== 8,
+  )
 
   const stakedOnlyFarms = activeFarms.filter(
     (farm) => farm.userData && new BigNumber(farm.userData.stakedBalance).isGreaterThan(0),
@@ -59,7 +63,9 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
         // if (!farm.tokenAmount || !farm.lpTotalInQuoteToken || !farm.lpTotalInQuoteToken) {
         //   return farm
         // }
-        const cakeRewardPerBlock = new BigNumber(farm.gajPerBlock || 1).times(new BigNumber(farm.poolWeight)) .div(new BigNumber(10).pow(18))
+        const cakeRewardPerBlock = new BigNumber(farm.gajPerBlock || 1)
+          .times(new BigNumber(farm.poolWeight))
+          .div(new BigNumber(10).pow(18))
         const cakeRewardPerYear = cakeRewardPerBlock.times(BLOCKS_PER_YEAR)
         // if (farm.userData) {
         //   const userShare = new BigNumber(farm.userData.stakedBalance).div(1000000000000000000).multipliedBy(farm.tokenPriceVsQuote)
@@ -68,16 +74,16 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
         //   userAllowance = userWL.allowance
         // }
 
-        let apy = cakePrice.times(cakeRewardPerYear);
+        let apy = cakePrice.times(cakeRewardPerYear)
 
-        let totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0);
+        let totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0)
 
         if (farm.quoteTokenSymbol === QuoteToken.BNB) {
-          totalValue = totalValue.times(bnbPrice);
+          totalValue = totalValue.times(bnbPrice)
         }
 
-        if(totalValue.comparedTo(0) > 0){
-          apy = apy.div(totalValue);
+        if (totalValue.comparedTo(0) > 0) {
+          apy = apy.div(totalValue)
         }
 
         return { ...farm, apy }
@@ -99,7 +105,12 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
 
   return (
     <Page>
-      <iframe src="https://quickswap.exchange/#/swap?inputCurrency=0xf4b0903774532aee5ee567c02aab681a81539e92" title="Buy GAJ" height='700px' width="100%"/>
+      <iframe
+        src="https://quickswap.exchange/#/swap?inputCurrency=0xf4b0903774532aee5ee567c02aab681a81539e92"
+        title="Buy GAJ"
+        height="700px"
+        width="100%"
+      />
     </Page>
   )
 }

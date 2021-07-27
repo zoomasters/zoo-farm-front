@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { BaseLayout, Card, CardBody, Heading, Text } from '@pancakeswap-libs/uikit'
-import Page from 'components/layout/Page'
+import Page from 'components/Layout/Page'
 
 import { useForest } from 'hooks/useContract'
 import useRefresh from 'hooks/useRefresh'
@@ -43,7 +43,6 @@ const BottomCardBody = styled(CardBody)`
   background-repeat: no-repeat;
   background-size: 100%;
 `
-
 
 // const QuesionHelperPositioner = styled.div`
 //   margin-top: 10px;
@@ -109,7 +108,7 @@ const Forest = () => {
               When the timer reaches zero, the current king wins the game.
             </Text>
             <Text ml={marginLeft} mb="20px">
-              Before another game can start one of the users has to press the restart game button.  <br />
+              Before another game can start one of the users has to press the restart game button. <br />
               This resets the contract and refreshes the cooldown timer before a new game begins.
             </Text>
             <Text ml={marginLeft} bold>

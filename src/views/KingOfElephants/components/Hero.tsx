@@ -4,7 +4,7 @@ import { Heading, Text } from '@pancakeswap-libs/uikit'
 // import { useGetMaxBet } from 'hooks/useMaxBet'
 // import { useMoneyWheel, useCake } from 'hooks/useContract'
 import useI18n from 'hooks/useI18n'
-import Container from 'components/layout/Container'
+import Container from '../../../components/Layout/Container'
 
 const Title = styled(Heading).attrs({ as: 'h1', size: 'xl' })`
   color: ${({ theme }) => theme.colors.secondary};

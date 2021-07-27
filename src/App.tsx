@@ -5,7 +5,7 @@ import { ResetCSS } from '@pancakeswap-libs/uikit'
 import BigNumber from 'bignumber.js'
 import { useFetchPublicData } from 'state/hooks'
 import GlobalStyle from './style/Global'
-import Menu from './components/Menu'
+import Menu from './components/header'
 import PageLoader from './components/PageLoader'
 
 // Route-based code splitting
@@ -43,56 +43,53 @@ const App: React.FC = () => {
     <Router>
       <ResetCSS />
       <GlobalStyle />
-      <Menu>
-        <Suspense fallback={<PageLoader />}>
-          <Switch>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-            <Route path="/farms">
-              <Farms />
-            </Route>
-            <Route path="/pools">
-              <Farms tokenMode/>
-            </Route>
-            <Route path="/junglepools">
-             <Pools />
-            </Route>
-            <Route path="/buy">
-             <Trade />
-            </Route>
-            <Route path="/liquidity">
-             <Liquidity />
-            </Route>
-            <Route path="/ido">
-             <Ifos />
-            </Route>
-            <Route path="/nft">
-             <Launchpad />
-            </Route>
-            <Route path="/kingOfElephants">
-             <KingOfElephants />
-            </Route>
-            {/* <Route path="/lottery"> */}
-            {/*  <Lottery /> */}
-            {/* </Route> */}
-            {/* <Route path="/ifo"> */}
-            {/*  <Ifos /> */}
-            {/* </Route> */}
-            {/* <Route path="/nft"> */}
-            {/*  <Nft /> */}
-            {/* </Route> */}
-            {/* Redirect */}
-            {/* <Route path="/syrup"> */}
-            {/*  <Redirect to="/pools" /> */}
-            {/* </Route> */}
-            {/* 404 */}
-            <Route component={NotFound} />
-          </Switch>
-        </Suspense>
-      </Menu>
-      
-
+      <Menu />
+      <Suspense fallback={<PageLoader />}>
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/farms">
+            <Farms />
+          </Route>
+          <Route path="/pools">
+            <Farms tokenMode />
+          </Route>
+          <Route path="/junglepools">
+            <Pools />
+          </Route>
+          <Route path="/buy">
+            <Trade />
+          </Route>
+          <Route path="/liquidity">
+            <Liquidity />
+          </Route>
+          <Route path="/ido">
+            <Ifos />
+          </Route>
+          <Route path="/nft">
+            <Launchpad />
+          </Route>
+          <Route path="/kingOfElephants">
+            <KingOfElephants />
+          </Route>
+          {/* <Route path="/lottery"> */}
+          {/*  <Lottery /> */}
+          {/* </Route> */}
+          {/* <Route path="/ifo"> */}
+          {/*  <Ifos /> */}
+          {/* </Route> */}
+          {/* <Route path="/nft"> */}
+          {/*  <Nft /> */}
+          {/* </Route> */}
+          {/* Redirect */}
+          {/* <Route path="/syrup"> */}
+          {/*  <Redirect to="/pools" /> */}
+          {/* </Route> */}
+          {/* 404 */}
+          <Route component={NotFound} />
+        </Switch>
+      </Suspense>
     </Router>
   )
 }

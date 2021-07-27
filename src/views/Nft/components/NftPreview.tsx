@@ -1,7 +1,7 @@
 import React from 'react'
 import orderBy from 'lodash/orderBy'
 import { Card, CardBody, Heading } from '@pancakeswap-libs/uikit'
-import Container from 'components/layout/Container'
+import Container from 'components/Layout/Container'
 import nfts from 'config/constants/nfts'
 import NftGrid from './NftGrid'
 import PleaseWaitCard from './PleaseWaitCard'
