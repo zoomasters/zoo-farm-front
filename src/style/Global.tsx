@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   background:url("/img/bg.png") !important;
   background-size:cover !important;
   background-repeat:no-repeat !important;
-  background-position:center !important;
+
 }
   * {
     font-family: 'Kanit', sans-serif;
@@ -266,7 +266,7 @@ a, a:visited {
   margin-bottom: 1rem;
   font-size: 2.5rem;
   color: #006EE9;
-  margin-left: 3rem;
+
 }
 #how-to-section .info p {
   color: #5C5C5C;
@@ -641,7 +641,7 @@ a, a:visited {
     margin-bottom: 4rem;
     font-size: 2rem;
     color: #006EE9;
-    margin-left: 3rem;
+
     font-weight: 600;
   }
   #about-us .about-content .about-content-message {
@@ -1058,7 +1058,6 @@ a, a:visited {
     margin-bottom: 4rem;
     font-size: 2rem;
     color: #006EE9;
-    margin-left: 3rem;
   }
   #about-us .about-content .about-content-message h5 {
     color: #006EE9;

@@ -33,7 +33,7 @@ const Home: React.FC = () => {
         {/* <div className="hero-image">
           <img src="/img/hero-monkey-image.png" width="500" alt="" />
         </div> */}
-        <div className="max-w-full bg mx-auto px-4 md:px-10 lg:px-18 py-0.5 grid lg:grid-cols-2">
+        <div className="max-w-full md:bg-center bg bg-left-bottom mx-auto px-4 md:px-10 lg:px-18 py-0.5 grid lg:grid-cols-2">
           <div className="md:px-8 px-7 pt-72 pb-16">
             <h2 className="lg:text-primary text-black-100 text-center font-medium lg:text-3xl text-xl leading-10">
               The Most Innovative Community-driven Charity 3.0 to support Zoo’s around the world.
@@ -174,7 +174,7 @@ const Home: React.FC = () => {
           <h2 className="text-primary font-medium lg:text-2xl text-lg leading-8">Total Supply: 100,000,000</h2>
         </div>
         <div className="bg-secondary">
-          <div className="text-center max-w-8xl mx-auto px-4 md:px-10 lg:px-18 lg:py-20 py-16">
+          <div className="text-center max-w-8xl mx-auto px-4 lg:py-20 py-16">
             <h2 className="text-primary font-bold lg:text-4xl text-2xl lg:leading-8 leading-6">
               Which Zoo does the community support?
             </h2>
@@ -182,8 +182,9 @@ const Home: React.FC = () => {
               We want to make sure the charity transaction rewards are at the best place.{' '}
               <br className="hidden lg:block" /> For that we have vetted the first batch of Zoos globally.
             </p>
-            <div className="grid lg:grid-cols-3 grid-cols-1 gap-10 max-w-4xl px-7 mx-auto pt-10 py-4">
-              <div className="bg-white rounded-lg py-5 px-4 pt-10 shadow-lg">
+            <div className="grid lg:grid-cols-3 grid-cols-1 gap-10 max-w-5xl px-0 mx-auto pt-10 py-4">
+              <div className="bg-white mt-32 relative rounded-lg py-5 px-4 pt-10 shadow-lg">
+                <img src="/img/zoo/sandiego.png" className="absolute left-14 -top-36 w-52" alt="San Diego Zoo" />
                 <p className="text-base pb-2 text-gray-800 leading-6">
                   Houses more than 3,500 animals across 650 different species and has often been awarded as one of the
                   best zoos in the world..
@@ -191,7 +192,9 @@ const Home: React.FC = () => {
                 <h2 className="text-primary font-semibold lg:text-2xl text-xl">San Diego Zoo</h2>
                 <h2 className="text-primary font-medium text-xs">San Diego, California, USA</h2>
               </div>
-              <div className="bg-white rounded-lg py-5 px-4 pt-10 shadow-lg">
+              <div className="bg-white relative mt-32 rounded-lg py-5 px-4 pt-10 shadow-lg">
+                <img src="/img/zoo/duisburg.png" className="absolute left-14 -top-36 w-52" alt="San Diego Zoo" />
+
                 <p className="text-base pb-2 text-gray-800 leading-6">
                   One of the largest zoological gardens in Germany founded in 1934. It is especially well known for its
                   dolphinarium and breeding koalas.
@@ -199,7 +202,8 @@ const Home: React.FC = () => {
                 <h2 className="text-primary font-semibold lg:text-2xl text-xl">Zoo Duisburg</h2>
                 <h2 className="text-primary font-medium text-xs">Duisburg, Germany</h2>
               </div>
-              <div className="bg-white rounded-lg py-5 px-4 pt-10 shadow-lg">
+              <div className="bg-white relative mt-32 rounded-lg py-5 px-4 pt-10 shadow-lg">
+                <img src="/img/zoo/arignar.png" className="absolute left-14 -top-36 w-52" alt="San Diego Zoo" />
                 <p className="text-base pb-2 text-gray-800 leading-6">
                   The first public zoo in India. It houses 2,553 species of flora and fauna across 1,265 acres, 1,500 of
                   which are wild species.
@@ -253,7 +257,7 @@ const Home: React.FC = () => {
                 The is currently team working on the following.
               </p>
             </div>
-            <div className="flex max-w-2xl mx-auto justify-between pb-2.5">
+            <div className="flex max-w-2xl md:px-0 px-10 mx-auto justify-between pb-2.5">
               <img
                 src="/img/Q1.svg"
                 onClick={handleClick.bind(this, 2)}
@@ -261,7 +265,7 @@ const Home: React.FC = () => {
                 role="button"
                 className={`cursor-pointer ${
                   show === 1 ? 'opacity-100' : 'opacity-20'
-                } hover:opacity-100 transition-all transform w-28`}
+                } hover:opacity-100 transition-all transform w-10 md:w-28`}
               />
               <img
                 src="/img/Q2.svg"
@@ -269,7 +273,7 @@ const Home: React.FC = () => {
                 role="button"
                 className={`cursor-pointer ${
                   show === 2 ? 'opacity-100' : 'opacity-20'
-                } hover:opacity-100 transition-all transform w-28`}
+                } hover:opacity-100 transition-all transform w-10 md:w-28`}
                 onClick={handleClick.bind(this, 2)}
               />
               <img
@@ -279,7 +283,7 @@ const Home: React.FC = () => {
                 role="button"
                 className={`cursor-pointer ${
                   show === 3 ? 'opacity-100' : 'opacity-20'
-                } hover:opacity-100 transition-all transform w-28`}
+                } hover:opacity-100 transition-all transform w-10 md:w-28`}
               />
               <img
                 onClick={handleClick.bind(this, 4)}
@@ -288,7 +292,7 @@ const Home: React.FC = () => {
                 role="button"
                 className={`cursor-pointer ${
                   show === 4 ? 'opacity' : 'opacity-20'
-                } hover:opacity-100 transition-all transform w-28`}
+                } hover:opacity-100 transition-all transform w-10 md:w-28`}
               />
             </div>
             <div className="flex items-center max-w-2xl pb-20 mx-auto justify-between">
@@ -298,7 +302,7 @@ const Home: React.FC = () => {
                 role="button"
                 src="/img/chevron-left.svg"
                 alt=""
-                className="cursor-pointer mr-20"
+                className="cursor-pointer md:mr-20"
               />
               {show === 1 ? (
                 <div className="text-center">
