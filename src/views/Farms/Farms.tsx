@@ -41,10 +41,10 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
   const [stakedOnly, setStakedOnly] = useState(false)
 
   const activeFarms = farmsLP.filter(
-    (farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier !== '0X' && farm.pid !== 8,
+    (farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier !== '0X',
   )
   const inactiveFarms = farmsLP.filter(
-    (farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier === '0X' && farm.pid !== 8,
+    (farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier === '0X' ,
   )
 
   const stakedOnlyFarms = activeFarms.filter(
@@ -66,33 +66,31 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
         const cakeRewardPerBlock = new BigNumber(farm.zooPerBlock || 1)
           .times(new BigNumber(farm.poolWeight))
           .div(new BigNumber(10).pow(18))
+       
         const cakeRewardPerYear = cakeRewardPerBlock.times(BLOCKS_PER_YEAR)
+   
         // if (farm.userData) {
         //   const userShare = new BigNumber(farm.userData.stakedBalance).div(1000000000000000000).multipliedBy(farm.tokenPriceVsQuote)
         //   userTotalTVL = userTotalTVL.plus(userShare)
         //   const userWL = Whitelist.find(add => add.wallet === account);
         //   userAllowance = userWL.allowance
         // }
-        console.log("start");
+   
 
 
         let apy = cakePrice.times(cakeRewardPerYear)
-        console.log(cakePrice.toNumber());
-        console.log(cakeRewardPerYear.toNumber());
-        console.log(apy.toNumber())
+
         let totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0)
-        console.log(totalValue.toNumber());
+
         if (farm.quoteTokenSymbol === QuoteToken.BNB) {
           totalValue = totalValue.times(bnbPrice)
         }
-        console.log(totalValue.toNumber());
+
         if (totalValue.comparedTo(0) > 0) {
-          console.log("value >0");
+
           apy = apy.div(totalValue)
         }
-        console.log("value <0");
-        console.log(apy.toNumber())
-        console.log("end");
+ 
 
         return { ...farm, apy }
       })
