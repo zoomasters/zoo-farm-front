@@ -7,6 +7,9 @@ declare module 'styled-components' {
   export interface DefaultTheme extends PancakeTheme {}
 }
 const GlobalStyle = createGlobalStyle`
+*,body,html{
+  scroll-behavior: smooth
+}
 .bg{
   background:url("/img/bg.png") !important;
   background-size:cover !important;

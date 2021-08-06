@@ -7,21 +7,21 @@ import { useWallet } from '@binance-chain/bsc-use-wallet'
 function Header() {
   const { connect, reset, status, account } = useWallet()
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(connect, reset, account)
-  console.log('account', account)
   const navs = [
-    { name: 'Home', to: '/' },
-    { name: 'Why ZooMaster', to: '/' },
-    { name: 'How we work', to: '/' },
-    { name: 'Our mission', to: '/' },
-    { name: 'Farms', to: '/farms' },
-    { name: 'Pools', to: '/pools' },
+    { name: 'Home', to: '#home' },
+    { name: 'Why ZooMaster', to: '#why' },
+    { name: 'How we work', to: '#work' },
+    { name: 'Our mission', to: '#mission' },
+    { name: 'Farms', to: '/farms', link: true },
+    { name: 'Pools', to: '/pools', link: true },
+    { name: 'Stats', to: '/stats', link: true },
   ]
   return (
     <>
-      <Popover className="relative bg-primary">
+      <Popover className="fixed w-full z-10 bg-primary">
         {({ open }) => (
           <>
-            <div className="max-w-8xl mx-auto px-4 md:px-10 lg:px-18 py-0.5">
+            <div className="w-full mx-auto px-4 md:px-10 lg:px-18 py-0.5">
               <div className="flex justify-between items-center px-1 border-b-2 border-gray-100 py-3 lg:justify-start lg:space-x-10">
                 <div className="flex justify-start lg:w-0 lg:flex-1">
                   <Link to="/">
@@ -38,13 +38,25 @@ function Header() {
                 <Popover.Group as="nav" className="hidden lg:flex space-x-4">
                   {navs?.map((v) => {
                     return (
-                      <Link
-                        key={v.name}
-                        to={v.to}
-                        className="text-base font-medium text-white hover:text-primary hover:bg-white leading-none px-2.5 py-3 border hover:border-white border-transparent transform transition-all"
-                      >
-                        {v.name}
-                      </Link>
+                      <>
+                        {v?.link ? (
+                          <Link
+                            key={v.name}
+                            to={v.to}
+                            className="text-base font-medium text-white hover:text-primary hover:bg-white leading-none px-2.5 py-3 border hover:border-white border-transparent transform transition-all"
+                          >
+                            {v.name}
+                          </Link>
+                        ) : (
+                          <a
+                            key={v.name}
+                            href={v.to}
+                            className="text-base font-medium text-white hover:text-primary hover:bg-white leading-none px-2.5 py-3 border hover:border-white border-transparent transform transition-all"
+                          >
+                            {v.name}
+                          </a>
+                        )}
+                      </>
                     )
                   })}
                   <button

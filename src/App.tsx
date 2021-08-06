@@ -4,10 +4,10 @@ import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { ResetCSS } from '@pancakeswap-libs/uikit'
 import BigNumber from 'bignumber.js'
 import { useFetchPublicData } from 'state/hooks'
+import Stats from 'views/Stats'
 import GlobalStyle from './style/Global'
 import Menu from './components/header'
 import PageLoader from './components/PageLoader'
-
 // Route-based code splitting
 // Only pool is included in the main bundle because of it's the most visited page'
 const Home = lazy(() => import('./views/Home'))
@@ -44,10 +44,14 @@ const App: React.FC = () => {
       <ResetCSS />
       <GlobalStyle />
       <Menu />
+      <div className="pb-17" />
       <Suspense fallback={<PageLoader />}>
         <Switch>
           <Route path="/" exact>
             <Home />
+          </Route>
+          <Route path="/stats" exact>
+            <Stats />
           </Route>
           <Route path="/farms">
             <Farms />

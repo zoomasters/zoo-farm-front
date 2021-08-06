@@ -33,7 +33,10 @@ const Home: React.FC = () => {
         {/* <div className="hero-image">
           <img src="/img/hero-monkey-image.png" width="500" alt="" />
         </div> */}
-        <div className="max-w-full md:bg-center bg bg-left-bottom mx-auto px-4 md:px-10 lg:px-18 py-0.5 grid lg:grid-cols-2">
+        <div
+          id="home"
+          className="max-w-full md:bg-center bg bg-left-bottom mx-auto px-4 md:px-10 lg:px-18 py-0.5 grid lg:grid-cols-2"
+        >
           <div className="md:px-8 px-7 pt-72 pb-16">
             <h2 className="lg:text-primary text-black-100 text-center font-medium lg:text-3xl text-xl leading-10">
               The Most Innovative Community-driven Charity 3.0 to support Zoo’s around the world.
@@ -72,7 +75,7 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="bg-secondary w-full">
+        <div id="why" className="bg-secondary w-full">
           <div className="max-w-8xl mx-auto px-4 md:px-10 lg:px-18 lg:py-20 py-16">
             <div className="flex items-center">
               <div className="w-2/5 hidden lg:flex">
@@ -135,7 +138,7 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="text-center max-w-8xl mx-auto px-4 md:px-10 lg:px-18 lg:py-20 py-16">
+        <div id="work" className="text-center max-w-8xl mx-auto px-4 md:px-10 lg:px-18 lg:py-20 py-16">
           <h2 className="text-primary font-medium lg:text-5xl text-lg leading-8">
             How does the ZooMaster Token work ?
           </h2>
@@ -240,7 +243,7 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="text-center max-w-8xl mx-auto px-4 md:px-10 lg:px-18 py-8">
+        <div id="mission" className="text-center max-w-8xl mx-auto px-4 md:px-10 lg:px-18 py-8">
           <img src="/img/logo-icon.png" alt="mission" className="mx-auto" />
           <h2 className="text-primary font-bold lg:text-5xl text-2xl lg:leading-8 leading-6">Our mission</h2>
           <p className="lg:text-3xl text-lg  px-3 lg:py-8 py-12 text-gray-500">
