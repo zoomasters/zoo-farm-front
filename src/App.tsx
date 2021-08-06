@@ -47,7 +47,7 @@ const App: React.FC = () => {
       <div className="pb-17" />
       <Suspense fallback={<PageLoader />}>
         <Switch>
-          <Route path="/" exact>
+          <Route path="/aboutus" exact>
             <Home />
           </Route>
           <Route path="/stats" exact>

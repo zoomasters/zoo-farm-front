@@ -14,7 +14,7 @@ function Header() {
     { name: 'Our mission', to: '#mission' },
     { name: 'Farms', to: '/farms', link: true },
     { name: 'Pools', to: '/pools', link: true },
-    { name: 'Stats', to: '/stats', link: true },
+    { name: 'About Us', to: '/aboutus', link: true },
   ]
   return (
     <>
