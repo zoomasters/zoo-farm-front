@@ -44,7 +44,7 @@ const App: React.FC = () => {
       <ResetCSS />
       <GlobalStyle />
       <Menu />
-      <div className="pb-17" />
+      <div className="md:pb-17" />
       <Suspense fallback={<PageLoader />}>
         <Switch>
           <Route path="/aboutus" exact>

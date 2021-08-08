@@ -1,5 +1,6 @@
+/* eslint-disable no-nested-ternary */
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 import { Popover, Transition } from '@headlessui/react'
 import { Button, useWalletModal } from '@pancakeswap-libs/uikit'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
@@ -7,8 +8,9 @@ import { useWallet } from '@binance-chain/bsc-use-wallet'
 function Header() {
   const { connect, reset, status, account } = useWallet()
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(connect, reset, account)
+  const location = useLocation()
   const navs = [
-    { name: 'Home', to: '#home' },
+    { name: 'Home', to: '/', link: true },
     { name: 'Why ZooMaster', to: '#why' },
     { name: 'How we work', to: '#work' },
     { name: 'Our mission', to: '#mission' },
@@ -39,22 +41,32 @@ function Header() {
                   {navs?.map((v) => {
                     return (
                       <>
-                        {v?.link ? (
+                        {location?.pathname?.includes('aboutus') ? (
+                          v?.link ? (
+                            <Link
+                              key={v.name}
+                              to={v.to}
+                              className="text-base font-medium text-white hover:text-primary hover:bg-white leading-none px-2.5 py-3 border hover:border-white border-transparent transform transition-all"
+                            >
+                              {v.name}
+                            </Link>
+                          ) : (
+                            <a
+                              key={v.name}
+                              href={v.to}
+                              className="text-base font-medium text-white hover:text-primary hover:bg-white leading-none px-2.5 py-3 border hover:border-white border-transparent transform transition-all"
+                            >
+                              {v.name}
+                            </a>
+                          )
+                        ) : (
                           <Link
                             key={v.name}
-                            to={v.to}
+                            to={v?.link ? v.to : '/'}
                             className="text-base font-medium text-white hover:text-primary hover:bg-white leading-none px-2.5 py-3 border hover:border-white border-transparent transform transition-all"
                           >
                             {v.name}
                           </Link>
-                        ) : (
-                          <a
-                            key={v.name}
-                            href={v.to}
-                            className="text-base font-medium text-white hover:text-primary hover:bg-white leading-none px-2.5 py-3 border hover:border-white border-transparent transform transition-all"
-                          >
-                            {v.name}
-                          </a>
                         )}
                       </>
                     )
@@ -90,9 +102,9 @@ function Header() {
                         <img src="/img/navbar-logo.svg" className="h-10 w-auto" alt="logo" />
                       </Link>
                       <div className="-mr-2">
-                        <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <Popover.Button className="bg-transparent rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                           <span className="sr-only">Close menu</span>
-                          {/* <XIcon className="h-6 w-6" aria-hidden="true" /> */}
+                          <img src="/img/menu.svg" className="w-5" alt="menu" />
                         </Popover.Button>
                       </div>
                     </div>
@@ -100,13 +112,41 @@ function Header() {
                       <nav className="grid grid-cols-1 gap-y-2">
                         {navs?.map((v) => {
                           return (
-                            <Link
-                              key={v.name}
-                              to={v.to}
-                              className="text-base font-medium text-white hover:text-primary hover:bg-white leading-none px-2.5 py-3 border hover:border-white border-transparent transform transition-all"
-                            >
-                              {v.name}
-                            </Link>
+                            <>
+                              {location?.pathname === '/aboutus' ? (
+                                v?.link ? (
+                                  <Popover.Button className="p-0 w-full text-left" key={v.name}>
+                                    <Link
+                                      key={v.name}
+                                      to={v.to}
+                                      className="text-base block w-full font-medium text-white hover:text-primary hover:bg-white leading-none px-2.5 py-3 border hover:border-white border-transparent transform transition-all"
+                                    >
+                                      {v.name}
+                                    </Link>
+                                  </Popover.Button>
+                                ) : (
+                                  <Popover.Button className="p-0 w-full text-left" key={v.name}>
+                                    <a
+                                      key={v.name}
+                                      href={v.to}
+                                      className="text-base block w-full font-medium text-white hover:text-primary hover:bg-white leading-none px-2.5 py-3 border hover:border-white border-transparent transform transition-all"
+                                    >
+                                      {v.name}
+                                    </a>
+                                  </Popover.Button>
+                                )
+                              ) : (
+                                <Popover.Button className="p-0 w-full text-left" key={v.name}>
+                                  <Link
+                                    key={v.name}
+                                    to={v?.link ? v.to : `/aboutus${v?.to}`}
+                                    className="text-base block w-full font-medium text-white hover:text-primary hover:bg-white leading-none px-2.5 py-3 border hover:border-white border-transparent transform transition-all"
+                                  >
+                                    {v.name}
+                                  </Link>
+                                </Popover.Button>
+                              )}
+                            </>
                           )
                         })}
                         <button
