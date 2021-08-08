@@ -65,7 +65,6 @@ const App: React.FC = () => {
       <GlobalStyle />
       <Menu />
       <div className="pb-17" />
-
       <Suspense fallback={<PageLoader />}>
         <Switch>
           <Route path="/aboutus" exact>
@@ -86,6 +85,7 @@ const App: React.FC = () => {
           <Route path="/liquidity">
             <Liquidity />
           </Route>
+
           {/* <Route path="/lottery"> */}
           {/*  <Lottery /> */}
           {/* </Route> */}
@@ -103,7 +103,6 @@ const App: React.FC = () => {
           <Route component={NotFound} />
         </Switch>
       </Suspense>
-  
       <footer className="bg-blue-200">
           <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
             <img width="100" className="mx-auto" src="/img/logo-white.png" alt="" />
