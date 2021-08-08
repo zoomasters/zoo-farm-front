@@ -8,10 +8,10 @@ function Header() {
   const { connect, reset, status, account } = useWallet()
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(connect, reset, account)
   const navs = [
-    { name: 'Home', to: '#home' },
-    { name: 'Why ZooMaster', to: '#why' },
-    { name: 'How we work', to: '#work' },
-    { name: 'Our mission', to: '#mission' },
+    { name: 'Home', to: '/' },
+    { name: 'Why ZooMaster', to: 'aboutus#why' },
+    { name: 'How we work', to: 'aboutus#work' },
+    { name: 'Our mission', to: 'aboutus#mission' },
     { name: 'Farms', to: '/farms', link: true },
     { name: 'Pools', to: '/pools', link: true },
     { name: 'About Us', to: '/aboutus', link: true },
@@ -59,12 +59,12 @@ function Header() {
                       </>
                     )
                   })}
-                  <button
+                  <button 
                     onClick={status === 'connected' ? onPresentAccountModal : onPresentConnectModal}
                     type="submit"
-                    className="text-base font-medium text-white hover:text-primary hover:bg-white leading-none px-2.5 py-3 border hover:border-white border-transparent transform transition-all"
+                    className="text-base font-medium text-white hover:text-primary hover:bg-white leading-none px-2.5 py-3 border hover:border-white border-transparent transform transition-all bg-yellow-600 font-semibold py-2 px-8 rounded-full shadow"
                   >
-                    {status === 'connected' ? 'Connected' : 'Connect'}
+                       {status === 'connected' ? 'Connected' : 'Connect Your Wallet'}
                   </button>
                 </Popover.Group>
               </div>

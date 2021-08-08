@@ -37,18 +37,16 @@ const EarnAPRCard = () => {
             .filter((farm) => farm.multiplier !== '0X')
             .map((farm) => {
                 if (farm.lpTotalInQuoteToken) {
-                    const BLOCKS_PER_YEAR = new BigNumber(10512000)
+                    const BLOCKS_PER_YEAR = new BigNumber(15017142)
                     const cakeRewardPerBlock = new BigNumber(farm.zooPerBlock || 1).times(new BigNumber(farm.poolWeight)).div(new BigNumber(10).pow(18))
                     const cakeRewardPerYear = cakeRewardPerBlock.times(BLOCKS_PER_YEAR)
 
                     let apy = cakePrice.times(cakeRewardPerYear);
                     let totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0);
 
-                    if (farm.quoteTokenSymbol === QuoteToken.BNB) {
-                        totalValue = totalValue.times(bnbPrice);
-                    } else if (farm.quoteTokenSymbol === QuoteToken.WETH) {
-                        totalValue = totalValue.times(wethPrice);
-                    }
+                    if (farm.quoteTokenSymbol === QuoteToken.CAKE) {
+                        totalValue = totalValue.times(cakePrice);
+                      }
 
                     if (totalValue.comparedTo(0) > 0) {
                         apy = apy.div(totalValue);

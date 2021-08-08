@@ -41,25 +41,7 @@ const farms: FarmConfig[] = [
     quoteTokenSymbol: QuoteToken.BUSD,
     quoteTokenAdresses: contracts.busd,
   },
-  {
-    pid: 0,
-    risk: 5,
-    isTokenOnly: true,
-    lpSymbol: 'ZOO',
-    lpAddresses: {
-      97: '',
-      56: '',
-      137: '0xa73f44270e8bb046d55dd46b89edecb92a46d610', // ZOO - USDC
-    },
-    tokenSymbol: 'ZOO',
-    tokenAddresses: {
-      97: '',
-      56: '',
-      137: '0x130FF075868aF7027A87F02FbA766037b73F4403',
-    },
-    quoteTokenSymbol: QuoteToken.BUSD,
-    quoteTokenAdresses: contracts.busd,
-  },
+  
   {
     pid: 3,
     risk: 5,
@@ -68,7 +50,7 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       97: '',
       56: '',
-      137: '0x99dADf889520b9cEBD9959d3ca1866DC2517Ea1d', // KRILL - USDC
+      137: '0xa73f44270e8bb046d55dd46b89edecb92a46d610', // KRILL - USDC
     },
     tokenSymbol: 'ZOO',
     tokenAddresses: {
@@ -76,8 +58,8 @@ const farms: FarmConfig[] = [
       56: '',
       137: '0x130FF075868aF7027A87F02FbA766037b73F4403',
     },
-    quoteTokenSymbol: QuoteToken.BUSD,
-    quoteTokenAdresses: contracts.busd,
+    quoteTokenSymbol: QuoteToken.CAKE,
+    quoteTokenAdresses: contracts.cake,
   },
   {
     pid: 4,

@@ -104,7 +104,7 @@ const FarmedStakingCard = () => {
           Add ZOO
         </Heading>
         <Flex flexDirection="column" mb="15px">
-          <LinkExternal mb="20px" small href={`https://explorer-mainnet.maticvigil.com/tokens/${token}`}>
+          <LinkExternal mb="20px" small href={`https://polygonscan.com/token/${token}`}>
             {token}
           </LinkExternal>
         </Flex>

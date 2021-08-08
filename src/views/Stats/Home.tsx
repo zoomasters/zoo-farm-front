@@ -1,4 +1,5 @@
 import React from 'react'
+
 import styled from 'styled-components'
 import Cookies from 'universal-cookie'
 import { Heading, Text, BaseLayout } from '@pancakeswap-libs/uikit'
@@ -16,6 +17,7 @@ import EarnAssetCard from './components/EarnAssetCard'
 import WinCard from './components/WinCard'
 import Timer from './components/Timer'
 import MetaMask from './components/Metamask'
+
 
 const Hero = styled.div`
   align-items: center;
@@ -92,7 +94,7 @@ const Home: React.FC = () => {
         <Heading as="h1" size="xl" mb="24px" color="secondary">
           ZooMaster
         </Heading>
-        <Text>You have seen the whales, now experience the Elephant</Text>
+        <Text> </Text>
       </Hero>
       <Heading as="h1" size="xl" mb="24px" color="secondary">
         Time until farming ends
@@ -104,16 +106,18 @@ const Home: React.FC = () => {
           <TwitterCard />
         </Cards>
         <CTACards>
-          <EarnAPRCard />
-          <EarnAssetCard />
-          <WinCard />
+    
+
+     
         </CTACards>
         <Cards>
           <CakeStats />
           <TotalValueLockedCard />
           <MetaMask />
+          <WinCard />
         </Cards>
       </div>
+
     </Page>
   )
 }

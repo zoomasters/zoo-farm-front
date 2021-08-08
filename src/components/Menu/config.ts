@@ -57,11 +57,11 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'QuickSwap Chart',
-        href: 'https://info.quickswap.exchange/token/0xF4B0903774532AEe5ee567C02aaB681a81539e92',
+        href: 'https://info.quickswap.exchange/token/0x130FF075868aF7027A87F02FbA766037b73F4403',
       },
       {
         label: 'Polygon Explorer',
-        href: 'https://explorer-mainnet.maticvigil.com/tokens/0xF4B0903774532AEe5ee567C02aaB681a81539e92',
+        href: 'https://polygonscan.com/token/0x130FF075868aF7027A87F02FbA766037b73F4403',
       },
       {
         label: 'Dapp Radar',
@@ -73,7 +73,7 @@ const config: MenuEntry[] = [
       },
       {
         label: 'GAJ Chart',
-        href: 'https://quickchart.app/token/0xF4B0903774532AEe5ee567C02aaB681a81539e92'
+        href: 'https://quickchart.app/token/0x130FF075868aF7027A87F02FbA766037b73F4403'
       }
     ],
   },

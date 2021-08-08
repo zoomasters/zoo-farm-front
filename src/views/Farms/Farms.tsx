@@ -79,19 +79,18 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
 
 
         let apy = cakePrice.times(cakeRewardPerYear)
-
+       
+       
         let totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0)
-
-        if (farm.quoteTokenSymbol === QuoteToken.BNB) {
-          totalValue = totalValue.times(bnbPrice)
+        
+        if (farm.quoteTokenSymbol === QuoteToken.CAKE) {
+          totalValue = totalValue.times(cakePrice)
         }
 
         if (totalValue.comparedTo(0) > 0) {
 
           apy = apy.div(totalValue)
-        }
- 
-
+        }  
         return { ...farm, apy }
       })
       return farmsToDisplayWithAPY.map((farm) => (

@@ -4,27 +4,11 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react'
 import { Link } from 'react-router-dom'
+
 import { HiCheckCircle } from 'react-icons/hi'
 
 const Home: React.FC = () => {
-  const social = [
-    {
-      to: '/',
-      src: '/img/reddit.svg',
-    },
-    {
-      to: '/',
-      src: '/img/github.svg',
-    },
-    {
-      to: '/',
-      src: '/img/twitter-white.svg',
-    },
-    {
-      to: '/',
-      src: '/img/telegram-white.svg',
-    },
-  ]
+  
   const [show, setShow] = React.useState(1)
   const handleClick = (e) => setShow(e)
   return (
@@ -405,19 +389,7 @@ const Home: React.FC = () => {
             <hr className="bg-gray-900 h-0.5" />
           </div>
         </div>
-        <footer className="bg-blue-200">
-          <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
-            <img width="100" className="mx-auto" src="/img/logo-white.png" alt="" />
-            <div className="py-8 flex justify-center space-x-5 lg:space-x-7">
-              {social?.map((item) => (
-                <Link to={item.to}>
-                  <img src={item.src} alt="" width="40px" />
-                </Link>
-              ))}
-            </div>
-            <p className="mt-8 lg:mt-2 pb-3 text-center text-xs text-white">© 2021 Zoomaster. All rights reserved</p>
-          </div>
-        </footer>
+        
       </section>
     </>
   )
