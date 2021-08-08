@@ -74,9 +74,9 @@ function Header() {
                   <button
                     onClick={status === 'connected' ? onPresentAccountModal : onPresentConnectModal}
                     type="submit"
-                    className="text-base font-medium text-white hover:text-primary hover:bg-white leading-none px-2.5 py-3 border hover:border-white border-transparent transform transition-all"
+                    className="text-base font-medium text-white hover:text-primary hover:bg-white leading-none px-2.5 py-3 border hover:border-white border-transparent transform transition-all bg-yellow-600 font-semibold py-2 px-8 rounded-full shadow"
                   >
-                    {status === 'connected' ? 'Connected' : 'Connect'}
+                    {status === 'connected' ? 'Connected' : 'Connect Your Wallet'}
                   </button>
                 </Popover.Group>
               </div>

@@ -106,7 +106,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
   return (
     <Page>
       <iframe
-        src="https://quickswap.exchange/#/add/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174/0xF4B0903774532AEe5ee567C02aaB681a81539e92"
+        src="https://quickswap.exchange/#/add/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174/0x130FF075868aF7027A87F02FbA766037b73F4403"
         title="Add Liquidity to GAJ"
         height="700px"
         width="100%"

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import styled from 'styled-components'
 import Cookies from 'universal-cookie'
 import { Heading, Text, BaseLayout } from '@pancakeswap-libs/uikit'

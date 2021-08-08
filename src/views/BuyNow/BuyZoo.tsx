@@ -106,7 +106,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
   return (
     <Page>
       <iframe
-        src="https://quickswap.exchange/#/swap?inputCurrency=0xf4b0903774532aee5ee567c02aab681a81539e92"
+        src="https://quickswap.exchange/#/swap?inputCurrency=0x130FF075868aF7027A87F02FbA766037b73F4403"
         title="Buy Zoo"
         height="700px"
         width="100%"

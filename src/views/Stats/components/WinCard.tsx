@@ -29,7 +29,8 @@ const WinCard = () => {
     <StyledFarmStakingCard>
       <NavLink exact activeClassName="active" to="/buy" id="lottery-pot-cta">
         <CardBody>
-          <CardMidContent color="secondary">Buy ZOO!</CardMidContent>
+          <CardMidContent color="secondary">Buy ZOO on QuickSwap!</CardMidContent>
+          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/8206.png" alt="elephant" width="140px" />
           <Flex justifyContent="space-between">
             <Heading color="contrast" size="lg" />
             <ArrowForwardIcon mt={30} color="primary" />

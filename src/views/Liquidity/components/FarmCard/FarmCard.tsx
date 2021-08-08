@@ -178,9 +178,9 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
           isTokenOnly={farm.isTokenOnly}
           bscScanAddress={
             farm.isTokenOnly ?
-              `https://explorer-mainnet.maticvigil.com/tokens/${farm.tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
+              `https://polygonscan.com/token/${farm.tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
               :
-              `https://explorer-mainnet.maticvigil.com/tokens/${farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]}`
+              `https://polygonscan.com/token/${farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]}`
           }
           totalValueFormated={totalValueFormated}
           lpLabel={lpLabel}

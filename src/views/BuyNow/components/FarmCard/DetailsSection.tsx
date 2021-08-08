@@ -69,7 +69,7 @@ const DetailsSection: React.FC<ExpandableSectionProps> = ({
       )}
       <Flex justifyContent="flex-start">
         <Link external href={bscScanAddress} bold={false}>
-          View on Matic Explorer
+          View on PolygonScan
         </Link>
       </Flex>
     </Wrapper>

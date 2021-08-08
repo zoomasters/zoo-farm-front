@@ -1,5 +1,6 @@
 import React, { useEffect, Suspense, lazy } from 'react'
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
+
+import { BrowserRouter as Router, Redirect, Route, Switch, Link } from 'react-router-dom'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { ResetCSS } from '@pancakeswap-libs/uikit'
 import BigNumber from 'bignumber.js'
@@ -28,6 +29,25 @@ BigNumber.config({
   EXPONENTIAL_AT: 1000,
   DECIMAL_PLACES: 80,
 })
+
+const social = [
+  {
+    to: '/',
+    src: '/img/reddit.svg',
+  },
+  {
+    to: 'https://github.com/zoomasters/',
+    src: '/img/github.svg',
+  },
+  {
+    to: 'https://twitter.com/thezmproject',
+    src: '/img/twitter-white.svg',
+  },
+  {
+    to: 'https://t.me/zoomaster',
+    src: '/img/telegram-white.svg',
+  },
+]
 
 const App: React.FC = () => {
   const { account, connect } = useWallet()
@@ -59,24 +79,13 @@ const App: React.FC = () => {
           <Route path="/pools">
             <Farms tokenMode />
           </Route>
-          <Route path="/junglepools">
-            <Pools />
-          </Route>
           <Route path="/buy">
             <Trade />
           </Route>
           <Route path="/liquidity">
             <Liquidity />
           </Route>
-          <Route path="/ido">
-            <Ifos />
-          </Route>
-          <Route path="/nft">
-            <Launchpad />
-          </Route>
-          <Route path="/kingOfElephants">
-            <KingOfElephants />
-          </Route>
+
           {/* <Route path="/lottery"> */}
           {/*  <Lottery /> */}
           {/* </Route> */}
@@ -94,6 +103,19 @@ const App: React.FC = () => {
           <Route component={NotFound} />
         </Switch>
       </Suspense>
+      <footer className="bg-blue-200">
+          <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+            <img width="100" className="mx-auto" src="/img/logo-white.png" alt="" />
+            <div className="py-8 flex justify-center space-x-5 lg:space-x-7">
+              {social?.map((item) => (
+               <a href={item.to} target="_blank" rel="noreferrer">
+                  <img src={item.src} alt="" width="40px" />
+                </a>
+              ))}
+            </div>
+            <p className="mt-8 lg:mt-2 pb-3 text-center text-xs text-white">© 2021 Zoomaster. All rights reserved</p>
+          </div>
+        </footer>
     </Router>
   )
 }
