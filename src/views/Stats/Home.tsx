@@ -103,26 +103,26 @@ const Home: React.FC = () => {
             Welcome to ZooMaster!
           </h3>
           <div className="flex lg:flex-row flex-col lg:space-x-2 space-y-4 lg:space-y-0 justify-center pb-2">
-            <button
-              type="button"
+            <a href="/buy" target="_blank" rel="noreferrer" 
+             
               className="flex items-center justify-center px-5 pt-1 pb-1.5 border border-primary text-lg font-medium rounded hover:shadow-sm text-white bg-primary hover:bg-blue-100 focus:outline-none"
             >
               Buy Token
-            </button>
-            <button
-              type="button"
+            </a>
+            <a href="https://twitter.com/thezmproject" target="_blank" rel="noreferrer" 
+            
               className="flex items-center justify-center px-5 pt-1 pb-1 border border-primary text-lg font-medium rounded hover:shadow-sm text-primary bg-white focus:outline-none"
             >
               <img src="/img/Twitter.svg" alt="twitter" className="w-6 mr-1" />
               Twitter
-            </button>
-            <button
-              type="button"
+            </a>
+            <a href="https://t.me/zoomaster" target="_blank" rel="noreferrer" 
+             
               className="flex items-center justify-center px-5 pt-1 pb-1 border border-primary text-lg font-medium rounded hover:shadow-sm text-primary bg-white focus:outline-none"
             >
               <img src="/img/Telegram.svg" alt="twitter" className="w-6 mr-1" />
               Telegram
-            </button>
+            </a>
           </div>
           <img src="./img/polygon.svg" width="60" alt="Built on Polygon" className="mx-auto lg:mt-2 mt-10" />
           <div className="flex justify-center text-gray-800 text-lg font-medium">
@@ -134,12 +134,12 @@ const Home: React.FC = () => {
         </div>
       </div>
       <Page>
-        <Hero>
+        {/* <Hero>
           <Heading as="h1" size="xl" mb="24px" color="secondary">
             ZooMaster
           </Heading>
-          <Text>You have seen the whales, now experience the Elephant</Text>
-        </Hero>
+          <Text></Text>
+        </Hero> */}
         <Heading as="h1" size="xl" mb="24px" color="secondary">
           Time until farming ends
         </Heading>
@@ -149,15 +149,16 @@ const Home: React.FC = () => {
             <FarmStakingCard />
             <TwitterCard />
           </Cards>
-          <CTACards>
+       {/*    <CTACards>
             <EarnAPRCard />
             <EarnAssetCard />
-            <WinCard />
-          </CTACards>
+          
+          </CTACards> */}
           <Cards>
             <CakeStats />
             <TotalValueLockedCard />
             <MetaMask />
+            <WinCard />
           </Cards>
         </div>
       </Page>
