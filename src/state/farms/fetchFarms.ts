@@ -61,6 +61,7 @@ const fetchFarms = async () => {
 
       let tokenAmount;
       let lpTotalInQuoteToken;
+      let lpStakedTotal;
       let tokenPriceVsQuote;
       if (farmConfig.isTokenOnly) {
       //     console.log('here2',
@@ -74,6 +75,7 @@ const fetchFarms = async () => {
            tokenPriceVsQuote = new BigNumber(quoteTokenBlanceLP).div(new BigNumber(10).pow(quoteTokenDecimals)).div(new BigNumber(tokenBalanceLP).div(new BigNumber(10).pow(tokenDecimals)));  
 }
         lpTotalInQuoteToken = tokenAmount.times(tokenPriceVsQuote);
+        lpStakedTotal = tokenAmount;
       }else{
         // Ratio in % a LP tokens that are in staking, vs the total number in circulation
         const lpTokenRatio = new BigNumber(lpTokenBalanceMC).div(new BigNumber(lpTotalSupply))
@@ -127,6 +129,8 @@ const fetchFarms = async () => {
         multiplier: `${allocPoint.div(100).toString()}X`,
         depositFeeBP: info.depositFeeBP,
         zooPerBlock: new BigNumber(zooPerBlock).toNumber(),
+        tokenDecimals: new BigNumber(tokenDecimals).toNumber(),
+        quoteTokenDecimals: new BigNumber(quoteTokenDecimals).toNumber(),
       }
     }),
   )

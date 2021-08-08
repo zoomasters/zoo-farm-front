@@ -19,8 +19,8 @@ const Ifos = lazy(() => import('./views/Ifos'))
 const NotFound = lazy(() => import('./views/NotFound'))
 const Buy = lazy(() => import('./views/Buy'))
 const Trade = lazy(() => import('./views/BuyNow'))
-const Liquidity = lazy(() => import('./views/Liquidity'))
-const Launchpad = lazy(() => import('./views/Teaser'))
+
+
 const KingOfElephants = lazy(() => import('./views/KingOfElephants'))
 // const Nft = lazy(() => import('./views/Nft'))
 
@@ -82,9 +82,7 @@ const App: React.FC = () => {
           <Route path="/buy">
             <Trade />
           </Route>
-          <Route path="/liquidity">
-            <Liquidity />
-          </Route>
+
 
           {/* <Route path="/lottery"> */}
           {/*  <Lottery /> */}
