@@ -133,73 +133,73 @@ const farms: FarmConfig[] = [
   },
 
   {
-    pid: 8,
+    pid: 19,
     risk: 1,
     isTokenOnly: true,
-    lpSymbol: 'USDC',
+    lpSymbol: 'DINO',
     lpAddresses: {
       56:'',
-      137: '0x2cf7252e74036d1da831d11089d326296e64a728'
+      137: '0x305EB24F848E3f02F13602aE93DDbB73Ac7e1958'
     },
-    tokenSymbol: 'USDC',
+    tokenSymbol: 'DINO',
     tokenAddresses: {
       56:'',
-      137: '0x2791bca1f2de4661ed88a30c99a7a9449aa84174'
+      137: '0xaa9654becca45b5bdfa5ac646c939c62b527d394'
     },
     quoteTokenSymbol: QuoteToken.BUSD,
     quoteTokenAdresses: contracts.busd,
   },
   {
-    pid: 9,
+    pid: 20,
     risk: 1,
     isTokenOnly: true,
     isCommunity: true,
-    lpSymbol: 'PolyDoge',
+    lpSymbol: 'SUSHI',
     lpAddresses: {
       56:'',
-      137: '0x7b3E67E63906d8576466c2f48158A30be0a9e36c'
+      137: '0xD9f57D9ed738AE20C5a60241a32Fd076e69AF005'
     },
-    tokenSymbol: 'PolyDoge',
+    tokenSymbol: 'SUSHI',
     tokenAddresses: {
       56:'',
-      137: '0x8A953CfE442c5E8855cc6c61b1293FA648BAE472'
+      137: '0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a'
     },
     quoteTokenSymbol: QuoteToken.BUSD,
     quoteTokenAdresses: contracts.busd,
   },
  
   {
-    pid: 10,
+    pid: 21,
     risk: 69,
-    lpSymbol: 'VERT-USDC LP',
+    lpSymbol: 'DINO-USDC LP',
     lpAddresses: {
       56:'',
-      137: '0x668269d6E5D2c2dE31D132Ac218044211643622B'
+      137: '0x305EB24F848E3f02F13602aE93DDbB73Ac7e1958'
     },
-    tokenSymbol: 'VERT',
+    tokenSymbol: 'DINO',
     tokenAddresses: {
       56:'',
-      137: '0x72572ccf5208b59f4bcc14e6653d8c31cd1fc5a0'
+      137: '0xaa9654becca45b5bdfa5ac646c939c62b527d394'
     },
     quoteTokenSymbol: QuoteToken.BUSD,
     quoteTokenAdresses: contracts.busd,
   },
 
   {
-    pid: 18,
+    pid: 22,
     risk: 5,
-    lpSymbol: 'ZOO-IRID LP',
+    lpSymbol: 'ZOO-DINO LP',
     lpAddresses: {
       56:'',
-      137: '0x5421f02e7a78b6d00f1d65050d66e2b73404163c',
+      137: '0xE08b1CE6B33e1ADb26C875BEdc7E28C6475Ea94D',
     },
-    tokenSymbol: 'IRID',
+    tokenSymbol: 'DINO',
     tokenAddresses: {
       56:'',
-      137: '0x4523e85C144DE8Dd60acEc335bfC95fa87779D7C',
+      137: '0xaa9654becca45b5bdfa5ac646c939c62b527d394',
     },
-    quoteTokenSymbol: QuoteToken.BUSD,
-    quoteTokenAdresses: contracts.busd,
+    quoteTokenSymbol: QuoteToken.CAKE,
+    quoteTokenAdresses: contracts.cake,
   },
 
   {
