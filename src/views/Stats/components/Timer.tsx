@@ -39,12 +39,13 @@ const TimerBox = styled.div`
   text-align: center;
   padding-top: 20px;
   margin-bottom: 40px;
+  font-size: 18px;
   `
 const Timer = () => {
 
 
   const stratTime = Date.now() / 1000; // use UNIX timestamp in seconds
-  const endTime = 1629138258; // use UNIX timestamp in seconds
+  const endTime = 1629078654; // use UNIX timestamp in seconds
 
   const remainingTime = endTime - stratTime;
   const days = Math.ceil(remainingTime / daySeconds);

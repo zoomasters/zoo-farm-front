@@ -11,9 +11,6 @@ function Header() {
   const location = useLocation()
   const navs = [
     { name: 'Home', to: '/', link: true },
-    { name: 'Why ZooMaster', to: '#why' },
-    { name: 'How we work', to: '#work' },
-    { name: 'Our mission', to: '#mission' },
     { name: 'Farms', to: '/farms', link: true },
     { name: 'Pools', to: '/pools', link: true },
     { name: 'About Us', to: '/aboutus', link: true },

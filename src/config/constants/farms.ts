@@ -3,25 +3,25 @@ import { FarmConfig, QuoteToken } from './types'
 
 const farms: FarmConfig[] = [
 
-  {
-    pid: 1,
-    isTokenOnly: true,
-    risk: 3,
-    lpSymbol: 'WMATIC',
-    lpAddresses: {
-      97: '',
-      56: '',
-      137: '0x6e7a5fafcec6bb1e78bae2a1f0b612012bf14827', // WMATIC - USDC
-    },
-    tokenSymbol: 'MATIC',
-    tokenAddresses: {
-      97: '',
-      56: '',
-      137: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270', // WMATIC
-    },
-    quoteTokenSymbol: QuoteToken.BUSD,
-    quoteTokenAdresses: contracts.busd,
-  },
+  // {
+  //   pid: 1,
+  //   isTokenOnly: true,
+  //   risk: 3,
+  //   lpSymbol: 'WMATIC',
+  //   lpAddresses: {
+  //     97: '',
+  //     56: '',
+  //     137: '0x6e7a5fafcec6bb1e78bae2a1f0b612012bf14827', // WMATIC - USDC
+  //   },
+  //   tokenSymbol: 'MATIC',
+  //   tokenAddresses: {
+  //     97: '',
+  //     56: '',
+  //     137: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270', // WMATIC
+  //   },
+  //   quoteTokenSymbol: QuoteToken.BUSD,
+  //   quoteTokenAdresses: contracts.busd,
+  // },
   {
     pid: 2,
     isTokenOnly: true,
@@ -79,6 +79,41 @@ const farms: FarmConfig[] = [
     quoteTokenAdresses: contracts.busd,
   },
   {
+    pid: 7,
+    risk: 3,
+    isTokenOnly: true,
+    lpSymbol: 'QUICK',
+    lpAddresses: {
+      56:'',
+      137: '0x1f1e4c845183ef6d50e9609f16f6f9cae43bc9cb'
+    },
+    tokenSymbol: 'QUICK',
+    tokenAddresses: {
+      56:'',
+      137: '0x831753dd7087cac61ab5644b308642cc1c33dc13'
+    },
+    quoteTokenSymbol: QuoteToken.BUSD,
+    quoteTokenAdresses: contracts.busd,
+  },
+
+  {
+    pid: 19,
+    risk: 1,
+    isTokenOnly: true,
+    lpSymbol: 'DINO',
+    lpAddresses: {
+      56:'',
+      137: '0x305EB24F848E3f02F13602aE93DDbB73Ac7e1958'
+    },
+    tokenSymbol: 'DINO',
+    tokenAddresses: {
+      56:'',
+      137: '0xaa9654becca45b5bdfa5ac646c939c62b527d394'
+    },
+    quoteTokenSymbol: QuoteToken.BUSD,
+    quoteTokenAdresses: contracts.busd,
+  },
+  {
     pid: 5,
     risk: 3,
     isTokenOnly: true,
@@ -114,41 +149,7 @@ const farms: FarmConfig[] = [
     quoteTokenAdresses: contracts.busd,
   },
 
-  {
-    pid: 7,
-    risk: 3,
-    isTokenOnly: true,
-    lpSymbol: 'QUICK',
-    lpAddresses: {
-      56:'',
-      137: '0x1f1e4c845183ef6d50e9609f16f6f9cae43bc9cb'
-    },
-    tokenSymbol: 'QUICK',
-    tokenAddresses: {
-      56:'',
-      137: '0x831753dd7087cac61ab5644b308642cc1c33dc13'
-    },
-    quoteTokenSymbol: QuoteToken.BUSD,
-    quoteTokenAdresses: contracts.busd,
-  },
-
-  {
-    pid: 19,
-    risk: 1,
-    isTokenOnly: true,
-    lpSymbol: 'DINO',
-    lpAddresses: {
-      56:'',
-      137: '0x305EB24F848E3f02F13602aE93DDbB73Ac7e1958'
-    },
-    tokenSymbol: 'DINO',
-    tokenAddresses: {
-      56:'',
-      137: '0xaa9654becca45b5bdfa5ac646c939c62b527d394'
-    },
-    quoteTokenSymbol: QuoteToken.BUSD,
-    quoteTokenAdresses: contracts.busd,
-  },
+  
   {
     pid: 20,
     risk: 1,
@@ -219,39 +220,39 @@ const farms: FarmConfig[] = [
     quoteTokenAdresses: contracts.busd,
   },
 
-  {
-    pid: 13,
-    risk: 5,
-    lpSymbol: 'ZOO-WMATIC LP',
-    lpAddresses: {
-      56:'',
-      137: '0x4387c8385a76c70f8056d26ede2dcbc52cbb5c33',
-    },
-    tokenSymbol: 'WMATIC',
-    tokenAddresses: {
-      56:'',
-      137: '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
-    },
-    quoteTokenSymbol: QuoteToken.CAKE,
-    quoteTokenAdresses: contracts.cake,
-  },
+  // {
+  //   pid: 13,
+  //   risk: 5,
+  //   lpSymbol: 'ZOO-WMATIC LP',
+  //   lpAddresses: {
+  //     56:'',
+  //     137: '0x4387c8385a76c70f8056d26ede2dcbc52cbb5c33',
+  //   },
+  //   tokenSymbol: 'WMATIC',
+  //   tokenAddresses: {
+  //     56:'',
+  //     137: '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
+  //   },
+  //   quoteTokenSymbol: QuoteToken.CAKE,
+  //   quoteTokenAdresses: contracts.cake,
+  // },
 
-  {
-    pid: 14,
-    risk: 5,
-    lpSymbol: 'ZOO-WETH LP',
-    lpAddresses: {
-      56:'',
-      137: '0x1910272a6dc52ebe3eb063e30b5ac8e856cb429c',
-    },
-    tokenSymbol: 'WETH',
-    tokenAddresses: {
-      56:'',
-      137: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
-    },
-    quoteTokenSymbol: QuoteToken.CAKE,
-    quoteTokenAdresses: contracts.cake,
-  },
+  // {
+  //   pid: 14,
+  //   risk: 5,
+  //   lpSymbol: 'ZOO-WETH LP',
+  //   lpAddresses: {
+  //     56:'',
+  //     137: '0x1910272a6dc52ebe3eb063e30b5ac8e856cb429c',
+  //   },
+  //   tokenSymbol: 'WETH',
+  //   tokenAddresses: {
+  //     56:'',
+  //     137: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
+  //   },
+  //   quoteTokenSymbol: QuoteToken.CAKE,
+  //   quoteTokenAdresses: contracts.cake,
+  // },
 
   {
     pid: 15,
