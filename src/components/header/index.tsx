@@ -26,6 +26,9 @@ function Header() {
                   <Link to="/">
                     <img src="/img/navbar-logo.svg" className="h-10 w-auto md:h-16" alt="logo" />
                   </Link>
+                  <a href="https://rugdoc.io/project/zoomaster/" target="_blank" rel="noreferrer">
+                  <img src="/img/rugdoc-review-badge-for-light-bg.svg" className="h-8 w-auto md:h-14 pt-3 pl-6" alt="rugdoc review" />
+                  </a>
                 </div>
                 <div className="-mr-2 -my-2 lg:hidden">
                   <Popover.Button className="bg-transparent rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">

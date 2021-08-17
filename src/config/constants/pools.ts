@@ -506,7 +506,7 @@ const pools: PoolConfig[] = [
   //   tokenName: 'WMATIC',
   //   stakingTokenName: QuoteToken.ZOO,
   //   stakingTokenAddress: {
-  //     137: '0x130FF075868aF7027A87F02FbA766037b73F4403',
+  //     137: '0x8Fd9d5C9DC5467dfE1725A31492D811f162c11bC',
   //     97: '',
   //     56: '', // ZOO
   //   },

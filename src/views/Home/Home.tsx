@@ -122,44 +122,6 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-        <div id="work" className="text-center max-w-8xl mx-auto px-4 md:px-10 lg:px-18 lg:py-20 py-16">
-          <h2 className="text-primary font-medium lg:text-5xl text-lg leading-8">
-            How does the ZooMaster Token work ?
-          </h2>
-          <p className="lg:text-lg text-base py-3 px-1 text-gray-500">
-            Every transaction gives you passive income and raises funds to preserve our Urban <br />
-            Zoos for our kids. Let us make it happen together.
-          </p>
-          <p className="lg:text-lg text-base text-gray-500">For each transaction, the following occurs:</p>
-          <div className="grid lg:grid-cols-3 grid-cols-1 gap-5 pt-10 py-4">
-            <div className="">
-              <img src="/img/coin-burn.svg" alt="burn" className="mx-auto w-24" />
-              <h2 className="text-primary font-medium lg:text-2xl text-xl leading-8">3% Coin Burn/transaction</h2>
-              <p className="lg:text-lg text-base text-gray-500 leading-6">
-                Yes, 3% is removed from supply for every transaction reducing supply over time, causing upward pressure
-                on price with every transaction.
-              </p>
-            </div>
-            <div className="">
-              <img src="/img/wallet.svg" alt="burn" className="mx-auto w-24" />
-              <h2 className="text-primary font-medium lg:text-2xl text-xl leading-8">3% Reward to ZooMasters</h2>
-              <p className="lg:text-lg text-base text-gray-500 leading-6">
-                Holders of ZOO earn constant passive value increase just by holding ZOO in their wallet. Enjoy the
-                Growth. It feels good to be a ZooMaster!
-              </p>
-            </div>
-            <div className="">
-              <img src="/img/charity.svg" alt="burn" className="mx-auto w-24" />
-              <h2 className="text-primary font-medium lg:text-2xl text-xl leading-8">3% Charity LP</h2>
-              <p className="lg:text-lg text-base text-gray-500 leading-6">
-                Added to the Charity Liquidity Pool.70% donated to Urban Zoos and 30% used for Marketing. The community
-                can vote for the Zoo from our accredited list.
-              </p>
-            </div>
-          </div>
-          <h2 className="text-primary font-medium lg:text-2xl text-lg leading-8">Circulating Supply: 100,000,000</h2>
-          <h2 className="text-primary font-medium lg:text-2xl text-lg leading-8">Total Supply: 100,000,000</h2>
-        </div>
         <div className="bg-secondary">
           <div className="text-center max-w-8xl mx-auto px-4 lg:py-20 py-16">
             <h2 className="text-primary font-bold lg:text-4xl text-2xl lg:leading-8 leading-6">
